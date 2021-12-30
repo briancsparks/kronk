@@ -5,9 +5,11 @@ package cmd
 import (
 	"fmt"
 	"github.com/spf13/cobra"
-	"os"
+  "github.com/spf13/pflag"
+  "os"
+  "strings"
 
-	homedir "github.com/mitchellh/go-homedir"
+  homedir "github.com/mitchellh/go-homedir"
 	"github.com/spf13/viper"
 )
 
@@ -24,9 +26,9 @@ var rootCmd = &cobra.Command{
 	Short: "The path that rocks",
 	Long: `Hey, did you see that sky today -- Talk about blue!`,
 
-	// Uncomment the following line if your bare application
-	// has an action associated with it:
-	//	Run: func(cmd *cobra.Command, args []string) { },
+  //Run: func(cmd *cobra.Command, args []string) {
+  //  fmt.Printf("args: %v\n", args)
+  //},
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
@@ -82,12 +84,36 @@ func initConfig() {
 		viper.SetConfigName(".kronk")
 	}
 
+  viper.SetEnvPrefix("KRONK")
 	viper.AutomaticEnv() // read in environment variables that match
+
+  bindFlags(rootCmd)
 
 	// If a config file is found, read it in.
 	if err := viper.ReadInConfig(); err == nil {
 		fmt.Println("Using config file:", viper.ConfigFileUsed())
 	}
+}
+
+
+// Stolen from: https://github.com/carolynvs/stingoftheviper/blob/main/main.go
+// Bind each cobra flag to its associated viper configuration (config file and environment variable)
+func bindFlags(cmd *cobra.Command /*, v *viper.Viper*/) {
+  cmd.Flags().VisitAll(func(f *pflag.Flag) {
+
+    // Environment variables can't have dashes in them, so bind them to their equivalent
+    // keys with underscores, e.g. --favorite-color to STING_FAVORITE_COLOR
+    if strings.Contains(f.Name, "-") {
+      envVarSuffix := strings.ToUpper(strings.ReplaceAll(f.Name, "-", "_"))
+      viper.BindEnv(f.Name, fmt.Sprintf("%s_%s", "KRONK", envVarSuffix))
+    }
+
+    // Apply the viper config value to the flag when the flag is not set and viper has a value
+    if !f.Changed && viper.IsSet(f.Name) {
+      val := viper.Get(f.Name)
+      cmd.Flags().Set(f.Name, fmt.Sprintf("%v", val))
+    }
+  })
 }
 
 func rootInitForSub() {

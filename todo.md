@@ -1,5 +1,11 @@
 # TODO
 
+## gitsstatus
+
+* Don't recurse AppData
+* Be smart about AppData, and all the %AppWhatever% vars.
+
+## Other
 
 ### Pty / TTY
 

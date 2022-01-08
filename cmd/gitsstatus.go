@@ -137,19 +137,19 @@ func gitsStatusDir(entry *entryInfo) {
   originUrl := <-originUrlChan
 
   if len(originUrl) > 0 {
-   if strings.Contains(originUrl, "briancsparks") {
-     //Verbose0(fmt.Sprintf("Checking %s\n", entry.super.fulldirpath))
+    if strings.Contains(originUrl, "briancsparks") {
+      //Verbose0(fmt.Sprintf("Checking %s\n", entry.super.fulldirpath))
 
-     gitStatusChan, err := dir.launchForResult("git", []string{"status", "--short"}, "")
-     Check(err)
+      gitStatusChan, err := dir.launchForResult("git", []string{"status", "--short"}, "")
+      Check(err)
 
-     gitStatus := <-gitStatusChan
+      gitStatus := <-gitStatusChan
 
-     if len(gitStatus) > 0 {
-       fmt.Printf("%-94s %s\n", originUrl, cygpath(dir.fulldirpath))
-       fmt.Printf("=======================\n%s\ngit status: %s\n------------------------\n", dir.fulldirpath, gitStatus)
-     }
-   }
+      if len(gitStatus) > 0 {
+        fmt.Printf("%-94s %s\n", originUrl, cygpath(dir.fulldirpath))
+        fmt.Printf("=======================\n%s\ngit status: %s\n------------------------\n", dir.fulldirpath, gitStatus)
+      }
+    }
   }
 
 }

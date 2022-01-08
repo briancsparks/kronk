@@ -25,8 +25,8 @@ type superDir struct {
 
   root          string
 
-  dmap          map[string]bool
-  fmap          map[string]bool
+  dmap          map[string]bool       /* Set of full dirnames in this dir */
+  fmap          map[string]bool       /* Set of full filenames in this dir */
 }
 
 func newSuperDir(dirpath, root string) *superDir {
@@ -94,7 +94,6 @@ func (super *superDir) launchForResult(exename string, args []string, deffault s
   return launchForResult(exename, args, super.fulldirpath, deffault)
 }
 
-//func repoLocWalk(codeRootsIn []string, stopper func (dirname string, dirs, files []string) ([]string, []string, []string)) (chan entryInfo, chan entryInfo, error) {
 func superWalk(topRootsIn []string, stopper func(*superDir) ([]string, []string, []string)) (/*files*/ chan entryInfo, /*dirs*/ chan entryInfo, error) {
   filesChan := make(chan entryInfo)
   dirsChan := make(chan entryInfo)
@@ -111,15 +110,15 @@ func superWalk(topRootsIn []string, stopper func(*superDir) ([]string, []string,
         doOnePath := func(onePath, rootDir string) {}
 
         wgTopRoots.Add(1)
-        go func(root string) {
+        go func(root string) {              /* The full root dir passed in as part of topRootsIn */
           defer wgTopRoots.Done()
 
           // ------------------
           var wgOnePath sync.WaitGroup
-          doOnePath = func(onePath, rootDir string) {
+          doOnePath = func(onePath, rootDir string) {         /* both are full paths */
             defer wgOnePath.Done()
 
-            Verbose(fmt.Sprintf("Processing(super): %s, rootDir: %s, root: %s\n", onePath, rootDir, root))
+            Vverbose(fmt.Sprintf("Processing(super): %s, rootDir: %s, root: %s\n", onePath, rootDir, root))
 
             // Make sure we only do it once
             if onePath != rootDir {
@@ -133,7 +132,7 @@ func superWalk(topRootsIn []string, stopper func(*superDir) ([]string, []string,
             super := newSuperDir(onePath, root)
 
             foundFiles, foundDirs, moreOf := stopper(super)
-            Verbose(fmt.Sprintf("Stop res:\n  -- %s\n  -- foundFiles: %v\n  -- foundDirs: %v\n  -- moreOf: %v\n", onePath, foundFiles, foundDirs, moreOf))
+            Vverbose(fmt.Sprintf("Stop res:\n  -- %s\n  -- foundFiles: %v\n  -- foundDirs: %v\n  -- moreOf: %v\n", onePath, foundFiles, foundDirs, moreOf))
 
             for _, file := range foundFiles {
               filesChan <- entryInfo{super:super, name:file, root:root}

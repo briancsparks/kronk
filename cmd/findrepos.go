@@ -53,7 +53,7 @@ func findreposInitForSub() {
 var lessof map[string]string
 
 func init() {
-  lessof = keyMirror(strings.Split("node_modules,.git", ","))
+  lessof = keyMirror(strings.Split("node_modules,.git,AppData", ","))
 }
 
 type entryInfo struct {

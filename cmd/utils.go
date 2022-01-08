@@ -14,6 +14,18 @@ func checkU(err error) {
   }
 }
 
+func splitLines(s string) []string {
+  return strings.Split(strings.ReplaceAll(s, "\r\n", "\n"), "\n")
+}
+
+func splitLinesNoFinalEmpty(s string) []string {
+  lines := strings.Split(strings.ReplaceAll(s, "\r\n", "\n"), "\n")
+  if len(lines) > 0 && len(lines[len(lines)-1]) == 0 {
+    lines = lines[:len(lines)-1]
+  }
+  return lines
+}
+
 func q(s string) string {
   return "\"" + s + "\""
 }

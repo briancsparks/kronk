@@ -147,7 +147,7 @@ func gitsStatusDir(entry *entryInfo) {
 
       if len(gitStatus) > 0 {
         fmt.Printf("%-94s %s\n", originUrl, cygpath(dir.fulldirpath))
-        fmt.Printf("=======================\n%s\ngit status: %s\n------------------------\n", dir.fulldirpath, gitStatus)
+        fmt.Printf("=======================\n%s\ngit status:\n%s\n------------------------\n", dir.fulldirpath, gitStatus)
       }
     }
   }

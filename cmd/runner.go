@@ -64,7 +64,14 @@ func launchForResult(exename string, args []string, cwd string, deffault string)
     }
 
     if err = cmd.Wait(); err == nil {
+      // Trim a single line result
       res = strings.TrimSpace(stdout.String())
+
+      // Otherwise, return output unchanged
+      lines := splitLinesNoFinalEmpty(res)
+      if len(lines) > 1 {
+        res = stdout.String()
+      }
 
     } else {
       // See if the cmd exited with code != 0

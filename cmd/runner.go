@@ -12,17 +12,17 @@ import (
 
 // TODO: Throttle the number of processes launched
 
-type cliArgs struct {
-  exepath   string
-  args    []string
-  cwd       string
-  deffault  string
-}
+//type cliArgs struct {
+//  exepath   string
+//  args    []string
+//  cwd       string
+//  deffault  string
+//}
 
-var commands chan cliArgs
+var commands chan struct{}
 
 func init() {
-  commands = make(chan cliArgs, 10)
+  commands = make(chan struct{}, 10)
 }
 
 func launch4Result(exename string , args []string) (chan string, error) {
@@ -44,7 +44,7 @@ func launchForResult(exename string, args []string, cwd string, deffault string)
 
     // Shove into list of commands
     Vverbose(fmt.Sprintf("Waiting: %s %v %s\n", exepath, args, cwd))
-    commands <- cliArgs{exepath, args, cwd, deffault}
+    commands <- struct{}{}
 
     // We got one of the slots, run our command
 

@@ -21,7 +21,7 @@ Looks in all the usual repo places and does git status on them.`,
 
   Run: func(cmd *cobra.Command, args []string) {
     gitsstatusInitForSub()
-		fmt.Println("gitsstatus called")
+    //fmt.Println("gitsstatus called")
 
     gitsstatus()
 	},
@@ -121,9 +121,9 @@ func gitsstatus() {
     }()
   }()
 
-  Verbose0(fmt.Sprintf("Main waiting on wg\n"))
+  Vvverbose(fmt.Sprintf("Main waiting on wg\n"))
   wg.Wait()
-  Verbose0(fmt.Sprintf("Main done waiting on wg\n"))
+  Vvverbose(fmt.Sprintf("Main done waiting on wg\n"))
 
 }
 

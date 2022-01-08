@@ -43,7 +43,7 @@ func launchForResult(exename string, args []string, cwd string, deffault string)
     defer close(out)
 
     // Shove into list of commands
-    Vvverbose(fmt.Sprintf("Waiting: %s %v %s\n", exepath, args, cwd))
+    Vverbose(fmt.Sprintf("Waiting: %s %v %s\n", exepath, args, cwd))
     commands <- cliArgs{exepath, args, cwd, deffault}
 
     // We got one of the slots, run our command
@@ -83,7 +83,7 @@ func launchForResult(exename string, args []string, cwd string, deffault string)
 
     // We are done, free up a slot
     <- commands
-    Vvverbose(fmt.Sprintf("Fini: %s %v %s\n", exepath, args, cwd))
+    Vverbose(fmt.Sprintf("Fini: %s %v %s\n", exepath, args, cwd))
   }()
 
   return out, err

@@ -37,13 +37,13 @@ func init() {
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
-  flagsCmd.Flags().String("string", "default-string", "string")
+  flagsCmd.Flags().String("string", "default-string", "string usage")
   viper.BindPFlag("String", flagsCmd.Flags().Lookup("string"))
 
   //viper.SetEnvPrefix("KRONKFLAGS")
   viper.BindEnv("String")
 
-  flagsCmd.Flags().String("two-part-string", "default-two-part-string", "two-part-string")
+  flagsCmd.Flags().String("two-part-string", "default-two-part-string", "two-part-string usage")
   viper.BindPFlag("TwoPartString", flagsCmd.Flags().Lookup("two-part-string"))
 
   //viper.SetEnvPrefix("KRONKFLAGS")

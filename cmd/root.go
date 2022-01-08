@@ -55,13 +55,32 @@ func init() {
   rootCmd.PersistentFlags().BoolVarP(&IsVverbose, "vverbose", "", false, "Vverbose output")
   viper.BindPFlag("vverbose", rootCmd.PersistentFlags().Lookup("vverbose"))
 
-  rootCmd.PersistentFlags().BoolVarP(&IsVvverbose, "vvverbose", "", false, "vvverbose output")
+  rootCmd.PersistentFlags().BoolVarP(&IsVvverbose, "vvverbose", "", false, "Vvverbose output")
   viper.BindPFlag("vvverbose", rootCmd.PersistentFlags().Lookup("vvverbose"))
 
   rootCmd.PersistentFlags().BoolVarP(&IsVvvverbose, "vvvverbose", "", false, "Vvvverbose output")
   viper.BindPFlag("vvvverbose", rootCmd.PersistentFlags().Lookup("vvvverbose"))
 
-	// Cobra also supports local flags, which will only run
+  // Kerbose
+  rootCmd.PersistentFlags().Bool("kerbose", false, "Kerbose output")
+  viper.BindPFlag("kerbose", rootCmd.PersistentFlags().Lookup("kerbose"))
+  viper.BindEnv("kerbose")
+
+  rootCmd.PersistentFlags().Bool("kkerbose", false, "Kkerbose output")
+  viper.BindPFlag("kkerbose", rootCmd.PersistentFlags().Lookup("kkerbose"))
+  viper.BindEnv("kkerbose")
+
+  rootCmd.PersistentFlags().Bool("kkkerbose", false, "Kkkerbose output")
+  viper.BindPFlag("kkkerbose", rootCmd.PersistentFlags().Lookup("kkkerbose"))
+  viper.BindEnv("kkkerbose")
+
+  rootCmd.PersistentFlags().Bool("kkkkerbose", false, "Kkkkerbose output")
+  viper.BindPFlag("kkkkerbose", rootCmd.PersistentFlags().Lookup("kkkkerbose"))
+  viper.BindEnv("kkkkerbose")
+
+
+
+  // Cobra also supports local flags, which will only run
 	// when this action is called directly.
 	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }

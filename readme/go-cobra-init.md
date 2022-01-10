@@ -95,11 +95,39 @@ git add .
 git commit -am "cobra init"
 ```
 
-### Beyond Init
+## Beyond Init
+
+### New Dependencies
 
 ```shell
 go get github.com/abc/def
+```
 
+### New Commands
+
+```shell
 cobra add -p hammerCmd nail
+```
+
+Then fix the newly-generated file:
+
+```go
+func init() {
+  codeCmd.AddCommand(nailCmd)
+
+  // Here you will define your flags and configuration settings.
+
+  // Cobra supports Persistent Flags which will work for this command
+  // and all subcommands, e.g.:
+  // nailCmd.PersistentFlags().String("foo", "", "A help for foo")
+
+  // Cobra supports local flags which will only run when this command
+  // is called directly, e.g.:
+  nailCmd.Flags().Bool("all", false, "Show all repos (even those without changes.)")
+  viper.BindPFlag("all", nailCmd.Flags().Lookup("all"))
+  viper.BindEnv("all")
+
+  bindFlags(nailCmd)
+}
 ```
 

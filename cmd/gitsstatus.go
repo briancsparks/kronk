@@ -29,17 +29,17 @@ Looks in all the usual repo places and does git status on them.`,
 }
 
 func init() {
-	codeCmd.AddCommand(gitsstatusCmd)
+  codeCmd.AddCommand(gitsstatusCmd)
 
-	// Here you will define your flags and configuration settings.
+  // Here you will define your flags and configuration settings.
 
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// gitsstatusCmd.PersistentFlags().String("foo", "", "A help for foo")
+  // Cobra supports Persistent Flags which will work for this command
+  // and all subcommands, e.g.:
+  // gitsstatusCmd.PersistentFlags().String("foo", "", "A help for foo")
 
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	gitsstatusCmd.Flags().Bool("all", false, "Show all repos (even those without changes.)")
+  // Cobra supports local flags which will only run when this command
+  // is called directly, e.g.:
+  gitsstatusCmd.Flags().Bool("all", false, "Show all repos (even those without changes.)")
   viper.BindPFlag("all", gitsstatusCmd.Flags().Lookup("all"))
   viper.BindEnv("all")
 

@@ -4,7 +4,6 @@ package cmd
 
 import (
   "fmt"
-  "github.com/go-vgo/robotgo"
   "github.com/spf13/cobra"
   "github.com/spf13/viper"
 )
@@ -21,15 +20,15 @@ For you.`,
     pname := viper.GetString("pname")
 		fmt.Printf("fxwin called, looking for %s\n", pname)
 
-    // PIDs
-    fpid, err := robotgo.FindIds("Google")
-    if err == nil {
-      fmt.Println("pids...", fpid)
-    }
-
-    robotgo.ActiveName(pname)
-    title := robotgo.GetTitle()
-    fmt.Println("title@@@ ", title)
+    //// PIDs
+    //fpid, err := robotgo.FindIds("Google")
+    //if err == nil {
+    //  fmt.Println("pids...", fpid)
+    //}
+    //
+    //robotgo.ActiveName(pname)
+    //title := robotgo.GetTitle()
+    //fmt.Println("title@@@ ", title)
 	},
 }
 

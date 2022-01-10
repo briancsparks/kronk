@@ -4,7 +4,9 @@ package cmd
 
 import (
   "fmt"
+  "github.com/go-vgo/robotgo"
   "github.com/spf13/cobra"
+  "github.com/spf13/viper"
 )
 
 // fxwinCmd represents the fxwin command
@@ -16,7 +18,18 @@ var fxwinCmd = &cobra.Command{
 For you.`,
 
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("fxwin called")
+    pname := viper.GetString("pname")
+		fmt.Printf("fxwin called, looking for %s\n", pname)
+
+    // PIDs
+    fpid, err := robotgo.FindIds("Google")
+    if err == nil {
+      fmt.Println("pids...", fpid)
+    }
+
+    robotgo.ActiveName(pname)
+    title := robotgo.GetTitle()
+    fmt.Println("title@@@ ", title)
 	},
 }
 
@@ -31,9 +44,9 @@ func init() {
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
-  //fxwinCmd.Flags().Bool("all", false, "Show all repos (even those without changes.)")
-  //viper.BindPFlag("all", fxwinCmd.Flags().Lookup("all"))
-  //viper.BindEnv("all")
+  fxwinCmd.Flags().String("pname", "Google", "Name of process to look for.")
+  viper.BindPFlag("pname", fxwinCmd.Flags().Lookup("pname"))
+  viper.BindEnv("pname")
 
   bindFlags(fxwinCmd)
 }

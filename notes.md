@@ -1,5 +1,42 @@
 # Notes
 
+## Fixes to use `robotgo`
+
+### Fix Building from Cygwin CLI
+
+Essentially, need to have `go` installed with `cgo`, and the 64-bit C
+compiler. Neither the go installer nor GoLand setup `cgo` (I thought GoLand did).
+
+* Install TDM GCC64 - https://github.com/lowkey42/MagnumOpus/wiki/TDM-GCC-Mingw64-Installation
+  * Put it into your `PATH` (`C:\TDM-GCC-64\bin`)
+  * Make sure it is the first `gcc` in your `PATH`.
+  * I had cygwin installed, which put its gcc at the very top of the path, so
+    I was unsuccessful.
+
+That much gets 64-bit `cgo` for you. However, robotgo also needed zlib installed.
+
+* From the same TDM url is a link to get the 64-bit zlib libraries and headers.
+  * ZIP/bin/*      ->  TDM/bin/
+  * ZIP/lib/*      ->  TDM/lib/
+  * ZIP/include/*  ->  TDM/include/
+
+At this point, I was able to build against robotgo from the cygwin shell.
+
+### Fix Building from GoLand
+
+I got this error when trying to compile from GoLand.
+
+```
+# github.com/robotn/gohook
+cc1.exe: sorry, unimplemented: 64-bit mode not compiled in
+```
+
+I could not figure out how to tell GoLand to use the TDM GCC compiler. The
+go compiler settings are at File > Settings | Go > Build Tags & Vendoring.
+
+* TBD
+
+
 ## Screen Saver (Blanking) on Pi
 
 ```shell

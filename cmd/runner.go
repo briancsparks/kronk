@@ -64,6 +64,8 @@ func launchForResult(exename string, args []string, cwd string, deffault string)
     }
 
     if err = cmd.Wait(); err == nil {
+      // ---------- Good result -------------------------------------
+
       // Trim a single line result
       res = strings.TrimSpace(stdout.String())
 

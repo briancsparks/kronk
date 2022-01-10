@@ -1,9 +1,42 @@
 # TODO
 
+## To Kronkify
+
+Go Tech to put into Kronk
+
+* RobotGo
+* AWS
+* GCP
+* Lorca
+* Ebiten
+* Some 3D
+* Otto
+* An FS or two (in prep of brash, and for Lorca generation)
+* TTY / PTY (in prep of brash)
+* sgfs-like dir awareness
+* Files watcher
+* Daemonize
+* Low-level keyboard for VIM-Platformer
+* cgo
+* ~~Dir Walk~~
+* Win user acct APIs
+  * https://github.com/iamacarpet/go-win64api
+
+
 ## gitsstatus
 
 * ~~Don't recurse AppData~~
 * Be smart about AppData, and all the %AppWhatever% vars.
+
+## tree
+
+A tree utility
+
+* Automagically know where not to recurse.
+  * `node_modules`, `.git`, etc
+  * Maybe in git submodules
+* Put files horizontally in certain scenarios
+  * Like when the dir has no sub-dirs, but plenty of files
 
 ## Other
 

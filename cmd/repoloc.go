@@ -14,7 +14,7 @@ var projectDirNames []string
 
 func init() {
   projectDirNames = []string{"AndroidStudioProjects", "EclipseProjects", "GolandProjects", "JordanProjects","vc2019projects","CLionProjects",
-    "GameProjects","IdeaProjects","PycharmProjects", "VcProjects", "WebStormProjects"}
+    "GameProjects","IdeaProjects","PycharmProjects", "VcProjects", "WebStormProjects", "BlogProjects"}
 }
 
 func repoLocWalk(codeRootsIn []string, stopper func (dirname string, dirs, files []string) ([]string, []string, []string)) (chan entryInfo, chan entryInfo, error) {

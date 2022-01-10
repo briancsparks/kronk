@@ -20,9 +20,18 @@ func splitLines(s string) []string {
 
 func splitLinesNoFinalEmpty(s string) []string {
   lines := strings.Split(strings.ReplaceAll(s, "\r\n", "\n"), "\n")
-  if len(lines) > 0 && len(lines[len(lines)-1]) == 0 {
-    lines = lines[:len(lines)-1]
+  if len(lines) == 0 {
+    return lines
   }
+
+  last := lines[len(lines)-1]
+  trimmed := strings.TrimRight(last, "\n")
+  if len(trimmed) == 0 {
+    return lines[:len(lines)-1]
+  }
+
+  lines[len(lines)-1] = trimmed + "\n"
+
   return lines
 }
 

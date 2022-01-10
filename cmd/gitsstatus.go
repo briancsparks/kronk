@@ -4,6 +4,7 @@ package cmd
 
 import (
   "fmt"
+  "github.com/spf13/viper"
   "path/filepath"
   "strings"
   "sync"
@@ -38,7 +39,11 @@ func init() {
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
-	// gitsstatusCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	gitsstatusCmd.Flags().Bool("all", false, "Show all repos (even those without changes.)")
+  viper.BindPFlag("all", gitsstatusCmd.Flags().Lookup("all"))
+  viper.BindEnv("all")
+
+  bindFlags(gitsstatusCmd)
 }
 
 func gitsstatusInitForSub() {
@@ -145,9 +150,22 @@ func gitsStatusDir(entry *entryInfo) {
 
       gitStatus := <-gitStatusChan
 
+      shouldDisplay := false
+
       if len(gitStatus) > 0 {
-        fmt.Printf("%-94s %s\n", originUrl, cygpath(dir.fulldirpath))
-        fmt.Printf("=======================\n%s\ngit status:\n%s\n------------------------\n", dir.fulldirpath, gitStatus)
+        shouldDisplay = true
+      } else if viper.GetBool("all") {
+        shouldDisplay = true
+      }
+
+      if shouldDisplay {
+        //fmt.Printf("%-94s %s\n", originUrl, cygpath(dir.fulldirpath))
+        if len(gitStatus) != 0 {
+          fmt.Printf("=======================\n%-94s %s\ngit status(%d):\n%s------------------------\n", dir.fulldirpath, originUrl, len(gitStatus), gitStatus)
+        } else {
+          fmt.Printf("=======================\n%-94s %-55s  -- clean\n", dir.fulldirpath, originUrl)
+        }
+
       }
     }
   }

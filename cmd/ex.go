@@ -4,12 +4,13 @@ package cmd
 
 import (
 	"fmt"
+  "github.com/spf13/viper"
 
-	"github.com/spf13/cobra"
+  "github.com/spf13/cobra"
 )
 
-// eCmd represents the ex command
-var eCmd = &cobra.Command{
+// exCmd represents the ex command
+var exCmd = &cobra.Command{
 	Use:   "ex",
 	Short: "Execute a command",
 	Long: `Execute any command.
@@ -22,15 +23,21 @@ And Kronk will Kronk-ify it.`,
 }
 
 func init() {
-	rootCmd.AddCommand(eCmd)
+	rootCmd.AddCommand(exCmd)
 
 	// Here you will define your flags and configuration settings.
 
 	// Cobra supports Persistent Flags which will work for this command
 	// and all subcommands, `e`.g.:
-	// eCmd.PersistentFlags().String("foo", "", "A help for foo")
+	// exCmd.PersistentFlags().String("foo", "", "A help for foo")
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
-	// eCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	// exCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+
+  exCmd.Flags().Bool("all", false, "Show all repos (even those without changes.)")
+  viper.BindPFlag("all", exCmd.Flags().Lookup("all"))
+  viper.BindEnv("all")
+
+  bindFlags(exCmd)
 }

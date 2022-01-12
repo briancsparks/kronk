@@ -8,9 +8,9 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// eCmd represents the e command
+// eCmd represents the ex command
 var eCmd = &cobra.Command{
-	Use:   "e",
+	Use:   "ex",
 	Short: "Execute a command",
 	Long: `Execute any command.
 
@@ -27,7 +27,7 @@ func init() {
 	// Here you will define your flags and configuration settings.
 
 	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
+	// and all subcommands, `e`.g.:
 	// eCmd.PersistentFlags().String("foo", "", "A help for foo")
 
 	// Cobra supports local flags which will only run when this command

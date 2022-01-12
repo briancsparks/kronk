@@ -3,9 +3,7 @@ package cmd
 /* Copyright © 2021 Brian C Sparks <briancsparks@gmail.com> -- MIT (see LICENSE file) */
 
 import (
-	"fmt"
-  "github.com/spf13/viper"
-
+  "fmt"
   "github.com/spf13/cobra"
 )
 
@@ -35,9 +33,9 @@ func init() {
 	// is called directly, e.g.:
 	// exCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 
-  exCmd.Flags().Bool("all", false, "Show all repos (even those without changes.)")
-  viper.BindPFlag("all", exCmd.Flags().Lookup("all"))
-  viper.BindEnv("all")
+  //exCmd.Flags().Bool("all", false, "Show all repos (even those without changes.)")
+  //viper.BindPFlag("all", exCmd.Flags().Lookup("all"))
+  //viper.BindEnv("all")
 
   bindFlags(exCmd)
 }

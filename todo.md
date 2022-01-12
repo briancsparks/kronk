@@ -22,6 +22,11 @@ Go Tech to put into Kronk
 * Win user acct APIs
   * https://github.com/iamacarpet/go-win64api
 
+## General To Dos
+
+* Remove cmd/runner.go
+* Figure out how ex/runner.go can get to viper
+* Re-enable ex/runner.go Verbose()-ability
 
 ## gitsstatus
 

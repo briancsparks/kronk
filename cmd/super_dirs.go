@@ -2,6 +2,7 @@ package cmd
 
 import (
   "fmt"
+  "github.com/briancsparks/kronk/ex"
   "io/ioutil"
   "os"
   "path/filepath"
@@ -91,7 +92,8 @@ func (super *superDir) hasFile(s string) bool {
 }
 
 func (super *superDir) launchForResult(exename string, args []string, deffault string)  (chan string, error) {
-  return launchForResult(exename, args, super.fulldirpath, deffault)
+  //return launchForResult(exename, args, super.fulldirpath, deffault)
+  return ex.LaunchForResult(exename, args, super.fulldirpath, deffault)
 }
 
 func superWalk(topRootsIn []string, stopper func(*superDir) ([]string, []string, []string)) (/*files*/ chan entryInfo, /*dirs*/ chan entryInfo, error) {

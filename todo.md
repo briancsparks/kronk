@@ -4,6 +4,15 @@
 
 Go Tech to put into Kronk
 
+The list of things that are started:
+
+* Webserver
+  * built-in HTTP server
+  * Mimimal minimum server -- `./kronk.exe webserver minimum`
+  * Mat Ryer -- Typed in what was shown in video. Does not work.
+
+Todo
+
 * Projects
   * Pawns dont listen
   * Data Science
@@ -16,7 +25,6 @@ Technology
   * Other Go plotting
   * io/fs
   * afero
-  * built-in HTTP server
   * TLS
   * Lets Encrypt
   * websockets
@@ -29,6 +37,7 @@ Technology
   * Git-go
   * Mongo
   * Redis
+  * OpenCV
 
 Categorized
 

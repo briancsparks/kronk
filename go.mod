@@ -4,6 +4,7 @@ go 1.17
 
 require (
 	github.com/go-vgo/robotgo v0.100.10
+	github.com/googollee/go-socket.io v1.6.1
 	github.com/mitchellh/go-homedir v1.1.0
 	github.com/spf13/cobra v1.2.1
 	github.com/spf13/pflag v1.0.5
@@ -16,6 +17,9 @@ require (
 	github.com/StackExchange/wmi v1.2.1 // indirect
 	github.com/fsnotify/fsnotify v1.5.1 // indirect
 	github.com/go-ole/go-ole v1.2.6 // indirect
+	github.com/gofrs/uuid v4.0.0+incompatible // indirect
+	github.com/gomodule/redigo v1.8.4 // indirect
+	github.com/gorilla/websocket v1.4.2 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
 	github.com/inconshreveable/mousetrap v1.0.0 // indirect
 	github.com/lxn/win v0.0.0-20210218163916-a377121e959e // indirect

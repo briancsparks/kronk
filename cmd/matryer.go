@@ -41,6 +41,8 @@ func init() {
 type server struct {
   // Fields like:   db *someDatabase
 
+  // TODO: router := gin.New()        See: https://github.com/googollee/go-socket.io/blob/master/_examples/gin-gonic/main.go
+  // TODO: or use echo                     https://github.com/labstack/echo
   //router *someRouter
 }
 

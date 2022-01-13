@@ -10,6 +10,9 @@ import (
   "net/http"
 )
 
+// See this for clean shutdown: https://github.com/googollee/go-socket.io/blob/master/_examples/graceful-shutdown/main.go
+// See this for redis:          https://github.com/googollee/go-socket.io/tree/master/_examples/redis-adapter
+
 // socketioCmd represents the socketio command
 var socketioCmd = &cobra.Command{
 	Use:   "socketio",

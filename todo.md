@@ -38,6 +38,9 @@ Technology
   * Mongo
   * Redis
   * OpenCV
+  * JWT
+  * auth *
+  * Face recognition: https://hackernoon.com/face-recognition-with-go-676a555b8a7e
 
 Categorized
 

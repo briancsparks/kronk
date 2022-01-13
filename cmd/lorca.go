@@ -19,6 +19,7 @@ import (
 var width int
 var height int
 var staticDir string
+var lorcaUrl string
 
 // lorcaCmd represents the lorca command
 var lorcaCmd = &cobra.Command{
@@ -36,7 +37,7 @@ Lorca, I say.`,
       lorcaArgs = append(lorcaArgs, "--class=Lorca")
     }
 
-    ui, err := lorca.New("", "", width, height, lorcaArgs...)
+    ui, err := lorca.New(lorcaUrl, "", width, height, lorcaArgs...)
     Check(err)
     defer ui.Close()
 
@@ -46,15 +47,18 @@ Lorca, I say.`,
     defer listener.Close()
 
     // Start the server, serving the FS
-    if len(staticDir) == 0 {
-      go http.Serve(listener, http.FileServer(FS))
-
-    } else {
+    if len(staticDir) > 0 {
       if staticDir == "default" {
         staticDir = filepath.Join("D:", "data", "projects", "WebStormProjects", "reactjs", "two", "for-lorca-redux", "build")
       }
       fmt.Printf("Serving from %s\n", staticDir)
       go http.Serve(listener, http.FileServer(http.Dir(staticDir)))
+
+    } else if len(lorcaUrl) > 0 {
+      fmt.Printf("Serving from %s\n", lorcaUrl)
+
+    } else {
+      go http.Serve(listener, http.FileServer(FS))
     }
 
     err = ui.Load(fmt.Sprintf("http://%s", listener.Addr()))
@@ -97,6 +101,10 @@ func init() {
   lorcaCmd.Flags().StringVarP(&staticDir, "static", "d", "", "The build dir to serve.")
   viper.BindPFlag("static", lorcaCmd.Flags().Lookup("static"))
   viper.BindEnv("static")
+
+  lorcaCmd.Flags().StringVarP(&lorcaUrl, "url", "u", "", "The URL to serve.")
+  viper.BindPFlag("url", lorcaCmd.Flags().Lookup("url"))
+  viper.BindEnv("url")
 
   bindFlags(lorcaCmd)
 }

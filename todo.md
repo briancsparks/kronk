@@ -4,19 +4,60 @@
 
 Go Tech to put into Kronk
 
-* RobotGo
-* AWS
-* GCP
-* Lorca
-* Ebiten
-* Some 3D
-* Otto
-* An FS or two (in prep of brash, and for Lorca generation)
-* TTY / PTY (in prep of brash)
-* sgfs-like dir awareness
-* Files watcher
-* Daemonize
-* Low-level keyboard for VIM-Platformer
+* Projects
+  * Pawns dont listen
+  * Data Science
+
+Technology
+
+* Techs
+  * Fyne
+  * Ebiten SVG
+  * Other Go plotting
+  * io/fs
+  * afero
+  * built-in HTTP server
+  * TLS
+  * Lets Encrypt
+  * websockets
+  * socket.io
+  * Gorilla
+  * Gin?
+  * GraphQL
+  * UDP Server
+  * Lecture RSS feed
+  * Git-go
+  * Mongo
+  * Redis
+
+Categorized
+
+* Automate UI / AI Game Driver / Screen Colors
+  * RobotGo
+* Automate Tasks (Kronkifications)
+  * Daemonize
+  * Files watcher
+  * Win user acct APIs
+* Cloud
+  * AWS
+  * GCP
+* Go UI
+  * Lorca
+    * An FS or two (for Lorca generation)
+* DebugViz
+  * Lorca
+* Games
+  * Ebiten
+  * Some 3D
+  * Low-level keyboard for VIM-Platformer
+* X-Join / Config
+  * Otto
+  * sgfs-like dir awareness
+* Brash
+  * An FS or two (in prep of brash)
+  * TTY / PTY (in prep of brash)
+  * sgfs-like dir awareness
+  * Low-level keyboard for VIM-Platformer
 * cgo
 * ~~Dir Walk~~
 * Win user acct APIs

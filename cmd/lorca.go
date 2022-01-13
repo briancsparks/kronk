@@ -4,10 +4,12 @@ package cmd
 
 import (
   "fmt"
+  "github.com/spf13/viper"
   "net"
   "net/http"
   "os"
   "os/signal"
+  "path/filepath"
   "runtime"
 
   "github.com/spf13/cobra"
@@ -16,6 +18,7 @@ import (
 
 var width int
 var height int
+var staticDir string
 
 // lorcaCmd represents the lorca command
 var lorcaCmd = &cobra.Command{
@@ -43,7 +46,16 @@ Lorca, I say.`,
     defer listener.Close()
 
     // Start the server, serving the FS
-    go http.Serve(listener, http.FileServer(FS))
+    if len(staticDir) == 0 {
+      go http.Serve(listener, http.FileServer(FS))
+
+    } else {
+      if staticDir == "default" {
+        staticDir = filepath.Join("D:", "data", "projects", "WebStormProjects", "reactjs", "two", "for-lorca-redux", "build")
+      }
+      fmt.Printf("Serving from %s\n", staticDir)
+      go http.Serve(listener, http.FileServer(http.Dir(staticDir)))
+    }
 
     err = ui.Load(fmt.Sprintf("http://%s", listener.Addr()))
     Check(err)
@@ -61,17 +73,30 @@ Lorca, I say.`,
 }
 
 func init() {
-	experimentCmd.AddCommand(lorcaCmd)
+	rootCmd.AddCommand(lorcaCmd)
 
 	// Here you will define your flags and configuration settings.
 
 	// Cobra supports Persistent Flags which will work for this command
 	// and all subcommands, e.g.:
 	// lorcaCmd.PersistentFlags().String("foo", "", "A help for foo")
-  lorcaCmd.PersistentFlags().IntVarP(&width , "width", "w", 1600, "Window width")
-  lorcaCmd.PersistentFlags().IntVarP(&height, "height", "", 1000, "Window height")
+  //lorcaCmd.PersistentFlags().IntVarP(&width , "width", "w", 1600, "Window width")
+  //lorcaCmd.PersistentFlags().IntVarP(&height, "height", "", 1000, "Window height")
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
 	// lorcaCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+  lorcaCmd.Flags().IntVarP(&width, "width", "w", 1600, "Window width")
+  viper.BindPFlag("width", lorcaCmd.Flags().Lookup("width"))
+  viper.BindEnv("width")
+
+  lorcaCmd.Flags().IntVarP(&height, "height", "", 1000, "Window height")
+  viper.BindPFlag("height", lorcaCmd.Flags().Lookup("height"))
+  viper.BindEnv("height")
+
+  lorcaCmd.Flags().StringVarP(&staticDir, "static", "d", "", "The build dir to serve.")
+  viper.BindPFlag("static", lorcaCmd.Flags().Lookup("static"))
+  viper.BindEnv("static")
+
+  bindFlags(lorcaCmd)
 }

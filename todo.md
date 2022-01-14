@@ -8,8 +8,9 @@ The list of things that are started:
 
 * Webserver
   * built-in HTTP server
-  * Mimimal minimum server -- `./kronk.exe webserver minimum`
+    * Mimimal minimum server -- `./kronk.exe webserver minimum`
   * Mat Ryer -- Typed in what was shown in video. Does not work.
+  * socket.io
 
 Todo
 
@@ -28,7 +29,6 @@ Technology
   * TLS
   * Lets Encrypt
   * websockets
-  * socket.io
   * Gorilla
   * Gin?
   * GraphQL
@@ -41,6 +41,9 @@ Technology
   * JWT
   * auth *
   * Face recognition: https://hackernoon.com/face-recognition-with-go-676a555b8a7e
+  * VLC
+    * C:\Program Files (x86)\VideoLAN\VLC
+      * /cygdrive/c/Program\ Files\ \(x86\)/VideoLAN/VLC/vlc.exe "C:\Users\sparksb\Desktop\camera-scans\cards-auto-fps.mp4" --video-filter=scene --scene-format=png --scene-prefix=cards-30fps --scene-ratio=10 --scene-path="C:\Users\sparksb\Desktop\camera-scans\cards-30fps-iii" --verbose=2 vlc://quit
 
 Categorized
 
@@ -102,7 +105,8 @@ A tree utility
 
 * `stty -a`
 * https://pkg.go.dev/github.com/creack/pty
-* https://dev.to/napicella/linux-terminals-tty-pty-and-shell-part-2-2cb2
+* https://dev.to/napicella/linux-terminals-tty-pty-and-shell-192e
+  * https://dev.to/napicella/linux-terminals-tty-pty-and-shell-part-2-2cb2
 
 ### ImageMagick Fun
 

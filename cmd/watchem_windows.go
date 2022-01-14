@@ -1,3 +1,5 @@
+// +build experimental
+
 package cmd
 
 import (
@@ -37,7 +39,7 @@ For example, watch for when the proxy registry changes.`,
 }
 
 func init() {
-	rootCmd.AddCommand(watchemCmd)
+	xCmd.AddCommand(watchemCmd)
 
 	// Here you will define your flags and configuration settings.
 

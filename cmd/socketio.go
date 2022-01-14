@@ -1,3 +1,5 @@
+// +build experimental
+
 package cmd
 
 /* Copyright © 2021 Brian C Sparks <briancsparks@gmail.com> -- MIT (see LICENSE file) */
@@ -68,7 +70,7 @@ for you.`,
 }
 
 func init() {
-	rootCmd.AddCommand(socketioCmd)
+	xCmd.AddCommand(socketioCmd)
 
 	// Here you will define your flags and configuration settings.
 

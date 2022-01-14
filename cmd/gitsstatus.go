@@ -29,7 +29,7 @@ Looks in all the usual repo places and does git status on them.`,
 }
 
 func init() {
-  codeCmd.AddCommand(gitsstatusCmd)
+  rootCmd.AddCommand(gitsstatusCmd)
 
   // Here you will define your flags and configuration settings.
 

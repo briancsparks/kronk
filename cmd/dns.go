@@ -1,3 +1,5 @@
+// +build experimental
+
 package cmd
 
 /* Copyright © 2021 Brian C Sparks <briancsparks@gmail.com> -- MIT (see LICENSE file) */
@@ -27,7 +29,7 @@ at Route53.`,
 }
 
 func init() {
-	rootCmd.AddCommand(dnsCmd)
+	xCmd.AddCommand(dnsCmd)
 
 	// Here you will define your flags and configuration settings.
 

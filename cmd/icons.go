@@ -1,3 +1,5 @@
+// +build experimental
+
 package cmd
 
 /* Copyright © 2021 Brian C Sparks <briancsparks@gmail.com> -- MIT (see LICENSE file) */
@@ -44,7 +46,7 @@ Long`,
 }
 
 func init() {
-	rootCmd.AddCommand(iconsCmd)
+	xCmd.AddCommand(iconsCmd)
 
 	// Here you will define your flags and configuration settings.
 

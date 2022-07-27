@@ -18,33 +18,6 @@ Todo
   * Pawns dont listen
   * Data Science
 
-Technology
-
-* Techs
-  * Fyne
-  * Ebiten SVG
-  * Other Go plotting
-  * io/fs
-  * afero
-  * TLS
-  * Lets Encrypt
-  * websockets
-  * Gorilla
-  * Gin?
-  * GraphQL
-  * UDP Server
-  * Lecture RSS feed
-  * Git-go
-  * Mongo
-  * Redis
-  * OpenCV
-  * JWT
-  * auth *
-  * Face recognition: https://hackernoon.com/face-recognition-with-go-676a555b8a7e
-  * VLC
-    * C:\Program Files (x86)\VideoLAN\VLC
-      * /cygdrive/c/Program\ Files\ \(x86\)/VideoLAN/VLC/vlc.exe "C:\Users\sparksb\Desktop\camera-scans\cards-auto-fps.mp4" --video-filter=scene --scene-format=png --scene-prefix=cards-30fps --scene-ratio=10 --scene-path="C:\Users\sparksb\Desktop\camera-scans\cards-30fps-iii" --verbose=2 vlc://quit
-
 Categorized
 
 * Automate UI / AI Game Driver / Screen Colors
@@ -78,6 +51,35 @@ Categorized
 * Win user acct APIs
   * https://github.com/iamacarpet/go-win64api
 
+Technology
+
+* Techs
+  * Fyne
+  * Ebiten SVG
+  * Ebiten full-screen HUD at https://github.com/barjoio/screenpos
+    * And xdotool
+  * Other Go plotting
+  * io/fs
+  * afero
+  * TLS
+  * Lets Encrypt
+  * websockets
+  * Gorilla
+  * Gin?
+  * GraphQL
+  * UDP Server
+  * Lecture RSS feed
+  * Git-go
+  * Mongo
+  * Redis
+  * OpenCV
+  * JWT
+  * auth *
+  * Face recognition: https://hackernoon.com/face-recognition-with-go-676a555b8a7e
+  * VLC
+    * C:\Program Files (x86)\VideoLAN\VLC
+      * /cygdrive/c/Program\ Files\ \(x86\)/VideoLAN/VLC/vlc.exe "C:\Users\sparksb\Desktop\camera-scans\cards-auto-fps.mp4" --video-filter=scene --scene-format=png --scene-prefix=cards-30fps --scene-ratio=10 --scene-path="C:\Users\sparksb\Desktop\camera-scans\cards-30fps-iii" --verbose=2 vlc://quit
+
 ## General To Dos
 
 * Remove cmd/runner.go
@@ -98,6 +100,7 @@ A tree utility
   * Maybe in git submodules
 * Put files horizontally in certain scenarios
   * Like when the dir has no sub-dirs, but plenty of files
+* LS_COLORS
 
 ## Other
 

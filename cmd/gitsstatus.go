@@ -9,6 +9,7 @@ import (
   "strings"
   "sync"
 
+  "github.com/briancsparks/kronk/powerwalk"
   "github.com/spf13/cobra"
 )
 
@@ -48,6 +49,21 @@ func init() {
 
 func gitsstatusInitForSub() {
   codeInitForSub()
+}
+
+func gitsstatus2() {
+  userRepoRoots := os_UserHomeDirs()
+  userRepoRoots = append(userRepoRoots, "D:\\")
+  Verbose(fmt.Sprintf("userRepoRoots: %v\n", userRepoRoots))
+
+  //fmt.Printf("Verbosezz: v: %v, vv: %v, vvv: %v, vvvv: %v\n", IsVerbose, IsVverbose, IsVvverbose, IsVvvverbose)
+
+  codeRoots, err := powerwalk.PossibleContentDirs(userRepoRoots, strings.Split("dev,projects,go", ","), projectDirNames)
+  CheckMsg(err, "PossibleContentDirs")
+
+  Vverbose(fmt.Sprintf("codeRoots: %v\n", codeRoots))
+
+
 }
 
 func gitsstatus() {

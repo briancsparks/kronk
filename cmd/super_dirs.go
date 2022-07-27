@@ -1,5 +1,7 @@
 package cmd
 
+/* Copyright © 2021 Brian C Sparks <briancsparks@gmail.com> -- MIT (see LICENSE file) */
+
 import (
   "fmt"
   "github.com/briancsparks/kronk/ex"
@@ -9,8 +11,6 @@ import (
   "strings"
   "sync"
 )
-
-/* Copyright © 2021 Brian C Sparks <briancsparks@gmail.com> -- MIT (see LICENSE file) */
 
 //var projectDirNames []string
 //

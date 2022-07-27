@@ -36,6 +36,12 @@ go compiler settings are at File > Settings | Go > Build Tags & Vendoring.
 
 * TBD
 
+## Other `robotgo` Notes
+
+* You HAVE TO step into robotgo to understand what it is doing.
+* `github.com/lxn/win` is THE package to do direct Windows API stuff.
+* MSDN User input stuff: https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-setcapture
+
 
 ## Screen Saver (Blanking) on Pi
 
